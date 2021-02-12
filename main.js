@@ -17,7 +17,21 @@ async function generateUselessFacts() {
     const clickedButton = document.getElementById("search-button");
     clickedButton.addEventListener("click", generateUselessFacts);
 
+    //gaan we hier eens even proberen om de vlag zichtbaar te krijgen
+    imageUrl = "https://restcountries.eu/data/abw.svg";
+    const containerDiv = document.getElementById("container");
+    const imageFlag = document.createElement("img");
+    imageFlag.setAttribute("src", imageUrl);
+    imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
+    containerDiv.appendChild(imageFlag);
 
+//Zorg ervoor dat de opgehaalde data op de volgende manier wordt toegevoegd aan de DOM:
+
+// [IMAGE: flag] --> staat onder response.data[0].flag
+// [country-name] --> data[0].name
+//     [country-naam] is situated in [subarea-name]. It has a population of [amount] people.
+//     The capital is [city] and you can pay with [currency]'s
+// They speak [language], [language] and [language]
 
 
 
