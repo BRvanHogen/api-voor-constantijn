@@ -12,18 +12,17 @@ async function generateUselessFacts() {
             console.log("and you can pay with " + response.data[0].currencies[0].name
                 + " or " + response.data[0].currencies[1].name);
         }
-}
-
-    const clickedButton = document.getElementById("search-button");
-    clickedButton.addEventListener("click", generateUselessFacts);
-
-    //gaan we hier eens even proberen om de vlag zichtbaar te krijgen
-    imageUrl = "https://restcountries.eu/data/abw.svg";
+    imageUrl = response.data[0].flag;  // of moet dit juist "https://restcountries.eu/data/abw.svg" zijn;
     const containerDiv = document.getElementById("container");
     const imageFlag = document.createElement("img");
     imageFlag.setAttribute("src", imageUrl);
     imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
     containerDiv.appendChild(imageFlag);
+}
+
+    const clickedButton = document.getElementById("search-button");
+    clickedButton.addEventListener("click", generateUselessFacts);
+
 
 //Zorg ervoor dat de opgehaalde data op de volgende manier wordt toegevoegd aan de DOM:
 
