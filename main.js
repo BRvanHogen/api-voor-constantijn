@@ -18,10 +18,25 @@ async function generateUselessFacts() {
     imageFlag.setAttribute("src", imageUrl);
     imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
     containerDiv.appendChild(imageFlag);
+
+    // tussen deze regel
+    naamLand = response.data[0].name;
+    const nameCountry = document.createElement("h2");
+    console.log(nameCountry);
+    nameCountry.innerText = naamLand;
+    containerDiv.appendChild(nameCountry);
+    // en deze regel proberen we de feitjes te implementeren.Let op de } hieronder!
 }
 
     const clickedButton = document.getElementById("search-button");
     clickedButton.addEventListener("click", generateUselessFacts);
+
+
+// Bonusopdracht: Maak een functie die ongeacht het aantal talen die in een land gesproken worden, een string maakt:
+// 1 taal: They speak [language]
+// 2 talen: They speak [language] and [language]
+// 3 talen: They speak [language], [language] and [language]
+// etc.
 
 
 //Zorg ervoor dat de opgehaalde data op de volgende manier wordt toegevoegd aan de DOM:
