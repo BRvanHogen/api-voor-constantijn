@@ -22,9 +22,18 @@ async function generateUselessFacts() {
     // tussen deze regel
     naamLand = response.data[0].name;
     const nameCountry = document.createElement("h2");
-    console.log(nameCountry);
     nameCountry.innerText = naamLand;
     containerDiv.appendChild(nameCountry);
+
+    informatie = response.data[0].name + " is situated in " + response.data[0].subregion + "." +
+        " It has a population of " + response.data[0].population + " people. The capital is " +
+        response.data[0].capital + ".";
+
+    const countryInformation = document.createElement("p");
+    console.log(countryInformation);
+    countryInformation.innerText = informatie;
+    containerDiv.appendChild(countryInformation);
+
     // en deze regel proberen we de feitjes te implementeren.Let op de } hieronder!
 }
 
@@ -48,8 +57,29 @@ async function generateUselessFacts() {
 // They speak [language], [language] and [language]
 
 
+//---------------------------------------
+//8.  Maak een inputveld op de pagina en zorg ervoor dat als de gebruiker op enter drukt,
+//     de functie wordt aangeroepen waarmee de gegevens over België worden opgehaald.
+
+const pressedKey = document.getElementById("search-bar");
+pressedKey.addEventListener("keydown", function (e){
+    if (e.keyCode === 13) {             //voor de keyCode moest ik even disable inspection doen, was struckthrough
+    generateUselessFacts(e);
+    }
+});
+//-------------------------------------------------------------------------------
+// 9. Zorg ervoor dat de waarde uit het input veld wordt gebruikt als query voor het GET request.
+// Er moet alleen een request gedaan worden als de gebruiker op enter drukt, of op de zoek-knop klikt.
+// Tip: gebruik een globale variabele.
 
 
+
+
+// document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
+//     if (e.key === 'Enter') {
+//         // code for enter
+//     }
+// });
 
 // const url = "https://restcountries.eu/rest/v2/name/${country}?fullText=true";
 // axios.get(url);
