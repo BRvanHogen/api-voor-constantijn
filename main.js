@@ -1,89 +1,99 @@
-async function generateUselessFacts() {
-    const response = await axios.get(
-        "https://restcountries.eu/rest/v2/name/aruba?fullText=true");
-    console.log("dit is de hele response", response);
-    console.log(response.data[0].name + " is situated in", response.data[0].subregion + "." +
-        " It has a population of " + response.data[0].population + " people. The capital is " +
-        response.data[0].capital);
+const api = "https://restcountries.eu/rest/v2/name/";
 
-        if (response.data[0].currencies.length===1) {
-            console.log("and you can pay with " + response.data[0].currencies[0].name); }
-        else {
-            console.log("and you can pay with " + response.data[0].currencies[0].name
-                + " or " + response.data[0].currencies[1].name);
-        }
-    imageUrl = response.data[0].flag;  // of moet dit juist "https://restcountries.eu/data/abw.svg" zijn;
+async function generateUselessFacts() {
+
+    const userInput = document.getElementById("search-bar").value;
+    const response = await axios.get(
+        api + userInput);
+    console.log("dit is de hele response", response);
+    // console.log(response.data[0].name + " is situated in", response.data[0].subregion + "." +
+    //     " It has a population of " + response.data[0].population + " people. The capital is " +
+    //     response.data[0].capital);
+    //
+    //
+    //     if (response.data[0].currencies.length === 1) {
+    //         console.log("and you can pay with " + response.data[0].currencies[0].name);
+    //     } else {
+    //         console.log("and you can pay with " + response.data[0].currencies[0].name
+    //             + " or " + response.data[0].currencies[1].name);
+    //     }
+
+    // tussen deze regel
+    imageUrl = response.data[0].flag;
     const containerDiv = document.getElementById("container");
     const imageFlag = document.createElement("img");
     imageFlag.setAttribute("src", imageUrl);
     imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
     containerDiv.appendChild(imageFlag);
 
-    // tussen deze regel
     naamLand = response.data[0].name;
     const nameCountry = document.createElement("h2");
+    nameCountry.setAttribute('class', 'pageInfo');
     nameCountry.innerText = naamLand;
     containerDiv.appendChild(nameCountry);
 
+    //valuta
+    if (response.data[0].currencies.length === 1) {
+       valuta = response.data[0].currencies[0].name;
+    } else {
+        valuta = response.data[0].currencies[0].name
+            + " or " + response.data[0].currencies[1].name;
+    }
+    //valuta
+
+    //talen
+    if (response.data[0].languages.length === 1) {
+        language = response.data[0].languages[0].name;
+    }
+
+    if (response.data[0].languages.length === 2) {
+        language = response.data[0].languages[0].name + " and " + response.data[0].languages[1].name;
+    }
+    if (response.data[0].languages.length === 3) {
+        language = response.data[0].languages[0].name + ", " + response.data[0].languages[1].name + " and " +
+            response.data[0].languages[2].name;
+    }
+
+    if (response.data[0].languages.length === 4) {
+        language = response.data[0].languages[0].name + ", " + response.data[0].languages[1].name + ", " +
+            response.data[0].languages[2].name + " and " + response.data[0].languages[3].name;
+    }
+    //talen
+
     informatie = response.data[0].name + " is situated in " + response.data[0].subregion + "." +
         " It has a population of " + response.data[0].population + " people. The capital is " +
-        response.data[0].capital + ".";
+        response.data[0].capital + " and you can pay with " + valuta + ". They speak " + language + ".";
 
     const countryInformation = document.createElement("p");
+    countryInformation.setAttribute('class', 'pageInfo');
     console.log(countryInformation);
     countryInformation.innerText = informatie;
     containerDiv.appendChild(countryInformation);
+    // en deze regel proberen we de feitjes te implementeren.
 
-    // en deze regel proberen we de feitjes te implementeren.Let op de } hieronder!
-}
-
+    //reset button. Clears input field after search is completed
+    const reset = document.getElementById("search-bar");
+    reset.value = "";
+} // deze
     const clickedButton = document.getElementById("search-button");
     clickedButton.addEventListener("click", generateUselessFacts);
 
-
-// Bonusopdracht: Maak een functie die ongeacht het aantal talen die in een land gesproken worden, een string maakt:
-// 1 taal: They speak [language]
-// 2 talen: They speak [language] and [language]
-// 3 talen: They speak [language], [language] and [language]
-// etc.
-
-
-//Zorg ervoor dat de opgehaalde data op de volgende manier wordt toegevoegd aan de DOM:
-
-// [IMAGE: flag] --> staat onder response.data[0].flag
-// [country-name] --> data[0].name
-//     [country-naam] is situated in [subarea-name]. It has a population of [amount] people.
-//     The capital is [city] and you can pay with [currency]'s
-// They speak [language], [language] and [language]
-
-
-//---------------------------------------
-//8.  Maak een inputveld op de pagina en zorg ervoor dat als de gebruiker op enter drukt,
-//     de functie wordt aangeroepen waarmee de gegevens over België worden opgehaald.
-
-const pressedKey = document.getElementById("search-bar");
-pressedKey.addEventListener("keydown", function (e){
-    if (e.keyCode === 13) {             //voor de keyCode moest ik even disable inspection doen, was struckthrough
-    generateUselessFacts(e);
+    const pressedKey = document.getElementById("search-bar");
+    pressedKey.addEventListener("keydown", function (e){
+    if (e.keyCode === 13) {
+        generateUselessFacts(e);
     }
 });
-//-------------------------------------------------------------------------------
-// 9. Zorg ervoor dat de waarde uit het input veld wordt gebruikt als query voor het GET request.
-// Er moet alleen een request gedaan worden als de gebruiker op enter drukt, of op de zoek-knop klikt.
-// Tip: gebruik een globale variabele.
 
 
 
+// Zorg ervoor dat er altijd maar één zoekresultaat op de pagina staat.
 
-// document.querySelector('#txtSearch').addEventListener('keypress', function (e) {
-//     if (e.key === 'Enter') {
-//         // code for enter
-//     }
-// });
-
-// const url = "https://restcountries.eu/rest/v2/name/${country}?fullText=true";
-// axios.get(url);
-
-
+// -- [ ] info moet op de pagina blijven tot de volgende search
+// -- [ ] we willen m.a.w. dat de eerste search-optie verschilt van de anderen
+// -- [x] of zouden we sowieso de functie kunnen beginnen met een console.clear();? NOPE! DOET NIKS!
+// -- [ ] oke, console clear deed het niet. Misschien kijken wat we kunnen doen bij de info implementatie?
+// -- [ ]  window.location.reload(); ging te snel.
+// -- [ ] kan de event listener niet registreren dat er iedere x na de eerste x muisklik/enter gerefresht moet worden?
 
 
