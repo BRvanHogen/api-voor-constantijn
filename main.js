@@ -1,7 +1,13 @@
 const api = "https://restcountries.eu/rest/v2/name/";
 
+
+
+
 async function generateUselessFacts() {
     try {
+        // const resetInfo = document.getElementById("container");
+        // resetInfo.innerHTML = "";
+
         const userInput = document.getElementById("search-bar").value;
         const response = await axios.get(
             api + userInput);
@@ -13,6 +19,7 @@ async function generateUselessFacts() {
         const imageFlag = document.createElement("img");
         imageFlag.setAttribute("src", imageUrl);
         imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
+        imageFlag.setAttribute('class', 'pageInfo');
         containerDiv.appendChild(imageFlag);
 
         naamLand = response.data[0].name;
@@ -57,7 +64,7 @@ async function generateUselessFacts() {
         countryInformation.setAttribute('class', 'pageInfo');
         console.log(countryInformation);
         countryInformation.innerText = informatie;
-        containerDiv.appendChild(countryInformation);
+        containerDiv.appendChild(countryInformation);   //.empty() toegevoegd
         // en deze regel proberen we de feitjes te implementeren.
 
         //reset button. Clears input field after search is completed
@@ -74,6 +81,13 @@ async function generateUselessFacts() {
         containerDiv.appendChild(displayError);
     }
 }
+    // function clearSearchResults() {
+    // document.getElementsByClassName('pageInfo').innerHTML = "";    //zowel met als zonder value geprobeerd
+    // }
+    //
+    // const clearSearch = document.getElementById("search-button");
+    // clearSearch.addEventListener("click", clearSearchResults);
+
     const clickedButton = document.getElementById("search-button");
     clickedButton.addEventListener("click", generateUselessFacts);
 
@@ -83,8 +97,6 @@ async function generateUselessFacts() {
         generateUselessFacts(e);
     }
 });
-
-
 
 // Zorg ervoor dat er altijd maar één zoekresultaat op de pagina staat.
 
