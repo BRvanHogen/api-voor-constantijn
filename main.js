@@ -1,8 +1,11 @@
 const api = "https://restcountries.eu/rest/v2/name/";
 
 async function generateUselessFacts() {
-    const removeContent = document.querySelector('#countryInfo');
+    const removeContent = document.querySelector('#country-info');
     removeContent.innerHTML = '';
+
+    const removeError = document.querySelector('#error');
+    removeError.innerHTML = '';
 
     try {
         const userInput = document.getElementById("search-bar").value;
@@ -11,7 +14,7 @@ async function generateUselessFacts() {
         console.log("dit is de hele response", response);
 
         imageUrl = response.data[0].flag;
-        const countryInfo = document.getElementById("countryInfo");
+        const countryInfo = document.getElementById("country-info");
         const imageFlag = document.createElement("img");
         imageFlag.setAttribute("src", imageUrl);
         imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
