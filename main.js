@@ -10,15 +10,6 @@ async function generateUselessFacts() {
             api + userInput);
         console.log("dit is de hele response", response);
 
-        // tussen deze regel
-        // imageUrl = response.data[0].flag;
-        // const containerDiv = document.getElementById("container");
-        // const imageFlag = document.createElement("img");
-        // imageFlag.setAttribute("src", imageUrl);
-        // imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
-        // imageFlag.setAttribute('class', 'pageInfo');
-        // containerDiv.appendChild(imageFlag);
-
         imageUrl = response.data[0].flag;
         const countryInfo = document.getElementById("countryInfo");
         const imageFlag = document.createElement("img");
