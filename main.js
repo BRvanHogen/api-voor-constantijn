@@ -1,32 +1,37 @@
 const api = "https://restcountries.eu/rest/v2/name/";
 
-
-
-
 async function generateUselessFacts() {
-    try {
-        // const resetInfo = document.getElementById("container");
-        // resetInfo.innerHTML = "";
+    const removeContent = document.querySelector('#countryInfo');
+    removeContent.innerHTML = '';
 
+    try {
         const userInput = document.getElementById("search-bar").value;
         const response = await axios.get(
             api + userInput);
         console.log("dit is de hele response", response);
 
         // tussen deze regel
+        // imageUrl = response.data[0].flag;
+        // const containerDiv = document.getElementById("container");
+        // const imageFlag = document.createElement("img");
+        // imageFlag.setAttribute("src", imageUrl);
+        // imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
+        // imageFlag.setAttribute('class', 'pageInfo');
+        // containerDiv.appendChild(imageFlag);
+
         imageUrl = response.data[0].flag;
-        const containerDiv = document.getElementById("container");
+        const countryInfo = document.getElementById("countryInfo");
         const imageFlag = document.createElement("img");
         imageFlag.setAttribute("src", imageUrl);
         imageFlag.setAttribute("alt", "sorry Constantijn, hier ontbreekt de vlag!");
         imageFlag.setAttribute('class', 'pageInfo');
-        containerDiv.appendChild(imageFlag);
+        countryInfo.appendChild(imageFlag);
 
         naamLand = response.data[0].name;
         const nameCountry = document.createElement("h2");
         nameCountry.setAttribute('class', 'pageInfo');
         nameCountry.innerText = naamLand;
-        containerDiv.appendChild(nameCountry);
+        countryInfo.appendChild(nameCountry);
 
         //valuta
         if (response.data[0].currencies.length === 1) {
@@ -64,7 +69,7 @@ async function generateUselessFacts() {
         countryInformation.setAttribute('class', 'pageInfo');
         console.log(countryInformation);
         countryInformation.innerText = informatie;
-        containerDiv.appendChild(countryInformation);   //.empty() toegevoegd
+        countryInfo.appendChild(countryInformation);   //.empty() toegevoegd
         // en deze regel proberen we de feitjes te implementeren.
 
         //reset button. Clears input field after search is completed
@@ -75,12 +80,13 @@ async function generateUselessFacts() {
 //plak hieronder terug
     catch (e) {
         console.error(e);
-        const foutmelding = "oh jee, dat land bestaat niet";
-        const displayError = document.createElement("h2");
-        displayError.innerText = foutmelding;
-        containerDiv.appendChild(displayError);
+        const span = document.getElementById("error");  //we lokaliseren de plek v/h element
+        const errorMessage = document.createElement('p'); //we maken een nieuwe node
+        errorMessage.textContent = "Code 404, probeer het nog een keer" //wijzen tekst toe
+        span.appendChild(errorMessage);  //zetten hem op de plek die we eerder hebben gelokaliseerd
     }
 }
+
     // function clearSearchResults() {
     // document.getElementsByClassName('pageInfo').innerHTML = "";    //zowel met als zonder value geprobeerd
     // }
