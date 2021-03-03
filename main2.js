@@ -6,6 +6,7 @@
 //          - wellicht dat we hier het destructuring al moeten gaan toepassen.
 //          - const { name, population } = data[0];
 //          - sort()methode toepassen op de verkregen data: population.sort((a, b) => a - b );
+//              - hij herkent de methode niet, geeft aan dat het geen functie is. Is population wel een array?
 //-- [ ] DOM manipuleren of list toevoegen aan HTML.
 
 apiAll = 'https://restcountries.eu/rest/v2/all';
@@ -15,8 +16,8 @@ async function showAllNamesAndPopulation () {
         const allEntriesResponse = await axios.get(apiAll);
         console.log(allEntriesResponse);
 
-        for (let i = 0; i < 249 ; i++) {
-            const { name, population } = allEntriesResponse.data[i];
+     for (let i = 0; i < 249 ; i++) {
+            const {name, population} = allEntriesResponse.data[i];
             console.log(name, population);
         }
 
@@ -26,6 +27,10 @@ async function showAllNamesAndPopulation () {
 }
 
 //roep de functie aan:
-showAllNamesAndPopulation();
+// showAllNamesAndPopulation();
 
-
+const container2 = document.getElementById('container-2');
+countriesSortedByPopulation = showAllNamesAndPopulation();
+const sorted = document.createElement('li');
+sorted.innerText = countriesSortedByPopulation;
+container2.appendChild(sorted);
