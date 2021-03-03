@@ -5,11 +5,12 @@
 //-- [ ] bedenken wat voor functie nodig is om te sorteren van hoog naar laag. Kwam dit voor in de les over arrayfuncties?
 //          - wellicht dat we hier het destructuring al moeten gaan toepassen.
 //          - const { name, population } = data[0];
+//          - sort()methode toepassen op de verkregen data: population.sort((a, b) => a - b );
 //-- [ ] DOM manipuleren of list toevoegen aan HTML.
 
 apiAll = 'https://restcountries.eu/rest/v2/all';
 
-async function showAllEntries () {
+async function showAllNamesAndPopulation () {
     try {
         const allEntriesResponse = await axios.get(apiAll);
         console.log(allEntriesResponse);
@@ -25,6 +26,6 @@ async function showAllEntries () {
 }
 
 //roep de functie aan:
-showAllEntries();
+showAllNamesAndPopulation();
 
 
