@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Shippori+Mincho:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 
 * {
     margin: 0;
@@ -8,24 +9,63 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color: gold;
+    background-color: hsl(194, 80%, 19%);
     color: wheat;
-    font-family: Shippori Mincho, "Arial", sans-serif;
+    font-family: Poppins, "Arial", sans-serif;
     font-weight: 600;
 }
 
 .container {
-    background-color: firebrick;
-    width: 80%;
+    background-color: hsl(194, 80%, 34%);
+    width: 90%;
+    border-radius: 5px;
+}
+
+.navbar {
+    height: 20px;
+    background-color: hsl(11, 80%, 54%);
+    border: 1px solid wheat;
+    border-radius: 5px;
+}
+
+.search {
+    border: 1px solid wheat;
+    border-radius: 5px;
+    background-color: hsl(194, 80%, 19%);
+    width: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar:hover {
+    transition: opacity 1s ease;
+    opacity: 0.8;
+}
+
+#search-button, #search-bar {
+    margin: 5px;
+    padding: 3px;
+}
+
+#search-button:hover, #search-bar:hover {
+    transition: background-color 0.7s ease;
+    border-style: solid;
+    background-color: cadetblue;
 }
 
 img {
     width: 50%;
     height: auto;
-    border: 2px solid red;
-    border-right-color: yellow;
-    border-bottom-color: orange;
+    border: 2px solid hsl(11, 80%, 54%);
+    border-right-color: hsl(11, 80%, 88%);
+    border-bottom-color: hsl(11, 80%, 65%);
     margin: 20px;
+}
+
+img:hover {
+    transition: opacity 1s ease;
+    opacity: 0.8;
 }
 
 p.pageInfo {
@@ -33,7 +73,14 @@ p.pageInfo {
     justify-content: center;
     align-content: center;
     margin: 5px;
+    padding: 10px;
     font-size: 12px;
+    font-weight: 400;
+}
+
+p.pageInfo:hover {
+    transition: font-size 0.7s ease;
+    font-size: 18px;
 }
 
 h2 {
@@ -43,65 +90,7 @@ h2 {
     margin: 5px;
 }
 
-
-
-
-/*body {*/
-/*    background-color: aquamarine;*/
-/*}*/
-
-/*.container {*/
-/*    width: 50%;*/
-/*    height: 100vh;*/
-/*    margin: auto;*/
-/*    display: flex;*/
-/*    !*flex-direction: column;*!*/
-/*    !*justify-content: space-between;*!*/
-/*    flex-flow: row wrap;*/
-/*    align-items: center;*/
-/*}*/
-
-/*.item {*/
-
-/*}*/
-/*img {*/
-/*    width: 75px;*/
-/*    height: 75px;*/
-/*}*/
-
-/*h2 {*/
-/*    background: linear-gradient(to left, hsl(43, 98%, 50%), hsl(20, 98%, 50%));*/
-/*    -webkit-background-clip: text;*/
-/*    -webkit-text-fill-color: transparent;*/
-/*    !*color: red;*!*/
-/*    display: inline;*/
-/*    padding: 20px;*/
-/*}*/
-
-/*!*#search-bar, #search-button {*!*/
-/*!*    display: flex;*!*/
-/*!*    justify-content: center;*!*/
-/*!*    align-items: center;*!*/
-/*!*}*!*/
-
-/*#search-bar:hover, #search-button:hover {*/
-/*    animation: fade 1.5s ease forwards;*/
-/*}*/
-
-/*@keyframes fade {*/
-/*    from {*/
-/*        opacity: 1;*/
-/*    }*/
-/*    to {*/
-/*        opacity: 0.5;*/
-/*    }*/
-/*}*/
-
-/*p {*/
-/*    font*/
-/*}*/
-
-/*p::selection {*/
-/*    background: blanchedalmond;*/
-/*    color: firebrick;*/
-/*}*/
+h2:hover {
+    transition: margin-left 2s ease;
+    margin-left: 340px;
+}

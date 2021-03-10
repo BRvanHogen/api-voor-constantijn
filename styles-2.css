@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Shippori+Mincho:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background-color: hsl(194, 80%, 19%);
+    color: wheat;
+    font-family: Poppins, "Arial", sans-serif;
+    font-weight: 400;
+}
+
+.container {
+    background-color: hsl(194, 80%, 34%);
+    width: 100%;
+    height: auto;
+}
+
+
+#countries-of-the-world {
+    column-count: 3;
+    width: 90%;
+    margin: 10px 5px 5px 10px;
+    padding: 10px 5px 5px 5px;
+}
+
+.single-country {
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    width: 90%;
+    height: auto;
+    padding: 5px;
+}
+
+.flag {
+    width: 15%;
+    height: auto;
+    margin: 15px;
+}
+
+img {
+    opacity: 0.8;
+}
+
+img:hover {
+    transition: opacity 1s ease;
+    opacity: 1;
+}
+
+.population-on {
+    opacity: 1;
+}
+
+.population-off {
+    opacity: 0;
+}
+
+.population-off:hover {
+    cursor: pointer;
+}
+
+
+
+/* color classes countries*/
+.blue {
+    color: rgb(91, 118, 188);
+}
+
+
+.green {
+    color: rgb(89, 128, 81);
+}
+
+
+.red {
+    color: rgb(194, 87, 94);
+}
+
+
+.yellow {
+    color: rgb(249, 212, 88);
+}
+
+
+.purple {
+    color: rgb(155, 90, 181);
+}
+
+
+.default {
+    color: rgb(100, 100 , 100);
+}

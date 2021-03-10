@@ -81,13 +81,6 @@ async function generateUselessFacts() {
     }
 }
 
-    // function clearSearchResults() {
-    // document.getElementsByClassName('pageInfo').innerHTML = "";    //zowel met als zonder value geprobeerd
-    // }
-    //
-    // const clearSearch = document.getElementById("search-button");
-    // clearSearch.addEventListener("click", clearSearchResults);
-
     const clickedButton = document.getElementById("search-button");
     clickedButton.addEventListener("click", generateUselessFacts);
 
@@ -98,13 +91,6 @@ async function generateUselessFacts() {
     }
 });
 
-// Zorg ervoor dat er altijd maar één zoekresultaat op de pagina staat.
 
-// -- [ ] info moet op de pagina blijven tot de volgende search
-// -- [ ] we willen m.a.w. dat de eerste search-optie verschilt van de anderen
-// -- [x] of zouden we sowieso de functie kunnen beginnen met een console.clear();? NOPE! DOET NIKS!
-// -- [ ] oke, console clear deed het niet. Misschien kijken wat we kunnen doen bij de info implementatie?
-// -- [ ]  window.location.reload(); ging te snel.
-// -- [ ] kan de event listener niet registreren dat er iedere x na de eerste x muisklik/enter gerefresht moet worden?
 
 
