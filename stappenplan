@@ -20,8 +20,8 @@ vindt je een voorbeeld van een GET-request.
 
 ## 3. Wanneer de gebruiker klikt wordt mijn async function aangeroepen
 
-- [ ] Variable met maken country -> "Belgie" (hardcoden)
-- [ ] Variabele Url maken -> https://restcountries.eu/rest/v2/name/${country}?fullText=true
-- [ ] axios.get(url)
+- [x] Variable met maken country -> "Belgie" (hardcoden)
+- [x] Variabele Url maken -> https://restcountries.eu/rest/v2/name/${country}?fullText=true
+- [x] axios.get(url)
 - [ ] await toevoegen
 - [ ] response -> checken
